@@ -1,0 +1,227 @@
+Install (or check installation of) NodeJS and Yarn
+NodeJS is a JavaScript runtime and Rails has this as a dependency in order to work correctly. Yarn is a package manager which Rails (6 and above) uses to manage some assets. In this lecture we will install these two (or check if they're already installed) in order.
+
+NodeJS
+To see if you have node already installed, pull up a PowerShell window and type in node --version followed by enter.
+
+1.
+
+
+If you get an error message like above, then you will need to install node.
+
+To install NodeJS, go to nodejs.org and click on the Download 'Recommended for most users' button.
+
+2.
+
+
+Once downloaded, click on the downloaded file and click through the installation options. No special options need to be selected, standard pre-selected defaults are good.
+
+Once installed, re-start your PowerShell window (close and open a new one) and if you type in the node version command again, you should see a version installed like below. You can also check for npm --version which is a package manager that comes with node by default.
+
+3.
+
+
+Yarn
+You can check for an existing installation of Yarn by checking the yarn version in your PowerShell window.
+
+4.
+
+
+If you get a message like above, then you don't have yarn installed and will need to install it. (Note: Yarn will need NodeJS to work, so make sure you have NodeJS installed already)
+
+To install yarn for Windows, head over to the yarn (classic) installation page: https://classic.yarnpkg.com/en/docs/install#windows-stable
+
+5.
+
+
+
+
+The easiest option is the download the installer (.msi file) by clicking on the 'Download Installer' option.
+
+6.
+
+
+Once the file is downloaded, click on it and complete the installation process.
+
+Once installed, re-start your PowerShell window and check for the yarn version like below.
+
+7.
+
+
+Congratulations! You now have NodeJS and Yarn (which are dependencies of Rails) successfully installed.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Install and setup Git for version control
+Git is a very popular version control system and is used by Rails when launching new Rails applications. Basically Rails sets up a git repository (it's ok if you don't know what this means) for every new application so you'll need Git installed and setup before you get to that step. You can learn more about git at git-scm.com
+
+You can check if you already have git installed pulling up a PowerShell window and typing in git --version followed by enter. (You can also try a git command like git config).
+
+1.
+
+
+If you get an error like above where it's saying 'git is not recognized', then you will need to download git.
+
+You can download git from downloads page: https://git-scm.com/downloads and select Windows from the options.
+
+Once downloaded, click on the downloaded file and click through the installation process. Among one of the installation options is the option to select your default editor for git like below.
+
+2.
+
+
+If you have a favorite editor like VSCode already installed and would like to use it, go ahead and select it here before clicking 'Next >'. However, if you don't or won't like to make a selection at this time, you can leave the default option of 'Vim' pre-selected which is fine.
+
+Among the installation prompts, you will be prompted for 'Adjusting your PATH environment'. Here you can leave the '(Recommended)' option of 'Git from the command line and also from 3rd-party software' checked like below (this will be done by default).
+
+3.
+
+
+
+
+Toward the end of the installation prompts, you will be prompted for "Configuring the line ending conversions". In this screen, leave the default option of "Checkout Windows-style, commit Unix-style line endings" checked like below.
+
+4.
+
+
+
+
+That should be it and you should be able to complete the remainder of the installation process without any issues.
+
+Once installed, you can re-start the PowerShell window and check for git --version or git config --list and you should get an output similar to the one below.
+
+5.
+
+
+The last command of git config --list displays the configured setup variables for your git installation. Here, for your first time setup only, you'll need to add two additional variables which are user.name and user.email.
+
+You can set these two variables up by entering the commands shown below in your PowerShell window (one followed by the other without the '$' sign, the '$' is the prompt), make sure you use your user name and the email you'd like to be associated with your git account:
+
+6.
+
+
+Once successfully set up, if you enter the command git config --list followed by enter you will see an output with the user.name and user.email variables showing up. These setup steps with post completion check are shown below.
+
+7.
+
+
+Congratulations! You now have git successfully installed and set up. All of the dependencies of Rails are now complete so we'll move forward and install Rails 6 in the next lecture.
+
+////////////////////////////////////////////////////////////////
+Install Ruby on Rails 6 and create new Rails application
+We are now ready to install Rails. First we need to learn what a gem is. Ruby, which is the language behind Rails, has code packages and libraries packaged as gems. These packages are hosted at the rubygems.org site. Each gem performs some task (or tasks) that we can perform simply by downloading the gem and using it, instead of having to re-write all the code from scratch ourselves. Rails itself is a gem, you can check it out here: https://rubygems.org/gems/rails
+
+Let's start working with gems in the PowerShell prompt by checking for the bundler gem first. Bundler is a gem that was installed in our system during the Ruby installation process. Bundler lets us install gems and use them in our Rails applications. Let's check for the bundler gem by typing in the following command followed by enter
+
+gem list bundler
+
+It should result in the output below:
+
+1.
+
+
+We can see that bundler is already installed. Alternatively, you can install bundler (if you don't already have it) by using gem install bundler command as shown below:
+
+gem install bundler
+
+Or, you can update the already installed bundler gem to its latest version using the gem update bundler command
+
+gem update bundler
+
+Now that we know about gems, let's download and install the sqlite3 gem. Sqlite is a lightweight database which Rails applications use by default during development. The ruby packaged version of this is called the sqlite3 gem. You can download this gem by using the command (gem install sqlite3) as shown below.
+
+2.
+
+
+Let's get some more practice and install the webpacker gem. Webpack is a JavaScript bundler which Rails 6 uses to manage its JavaScript assets. (If you don't understand what any of this means at this time, it's completely ok, we'll see what each of these things are during development). The webpacker gem makes webpack available for use for our Rails applications.
+
+To install the webpacker gem, issue the gem install webpacker command as shown below.
+
+3.
+
+
+Using the process we practiced above, let's use the gem install command to install the latest version of Rails as shown below followed by enter.
+
+gem install rails
+
+You can also use the command above with a flag indicating not to install documentation (saves time and space) as shown in the image below.
+
+4.
+
+
+This might take a bit of time. Once successfully installed, you can check for the version of rails that's installed by typing in the rails -v command followed by enter. You can also use gem list rails to see the versions of rails that you have installed. Both commands shown below.
+
+5.
+
+
+
+
+Now that we have rails installed, let's use it to create a new rails application. You can do it by using the following command structure
+
+rails new name_of_app
+
+So, if we wanted to create an application called test_app, you would use the command below followed by enter
+
+rails new test_app
+
+This will create a new rails application in a directory called test_app within the directory you are in. It will take a few minutes to create the application, including running webpacker installation steps for the application, and will end with a screen similar to the one shown below.
+
+6.
+
+
+Once complete, if you type ls and hit enter you'll see a test_app directory showing up among your list of directories. Navigate to this directory by issuing the following command (or use the name of the app that you have used if you didn't name it test_app).
+
+cd test_app
+
+You should now be in the test_app folder. This is your newly created rails application.
+
+As a last step, we will run what is known as the rails server to verify that the application got created correctly and preview it from a browser window.
+
+To do this, let's start the rails server (make sure you are in the test_app directory) by issuing the following command followed by enter:
+
+rails server
+
+This will start the server for you, and will look similar to the image below.
+
+7.
+
+
+Once the server is up and running (like above). Open a new browser window to preview the running application. You can navigate to the URL of localhost:3000 and should see something similar to the image below:
+
+8.
+
+
+Congratulations! you have successfully installed Rails, and created and previewed a Rails application. Now as a last step, we will need to shut down the rails server that is running. To do this, go back to the PowerShell window where the server is running and press Ctrl C to shut it down (that's capital C, so might require pressing down the control button, shift button and then C). It'll prompt you to terminate batch job, at which point you should type in Y followed by enter.
+
+Once complete, it should look like the image below.
+
+9.
+
+
+Congratulations again, you are now ready to work with Rails in your Windows machine!
+
+****************************
+
+Install Ruby on Rails 5 and create new Rails 5 applications
+In the previous lecture we saw how to install Rails 6 (or the latest version of Rails) and then use it to create a new Rails applications.
+
+At times you may need to work with specific versions of Rails which aren't the latest version or the default version in your system. In these cases you'll need to do two things.
+
+1. Install the version of Rails that you want
+
+2. Use this installed version (instead of the default version) to create a new Rails app
+
+Let's start with number 1 above. To install a specific version of rails, let's say Rails 5, version 5.2.4, you will need to pass in the version flag. For this case, you can use the following command followed by enter:
+
+gem install rails -v 5.2.4
+
+Once the installation is complete, you can check that rails 5.2.4 is listed among your rails gems by typing in gem list rails followed by enter.
+
+gem list rails
+
+Now, in order to create a new Rails 5 application using this specific version, you will need to specify it while issuing the rails new command like below followed by enter (otherwise it'll use the default version of Rails in your system).
+
+rails _5.2.4_ new test_app
+
+This will create a new rails app called test_app with Rails version 5.2.4
+
+Good luck!
+
